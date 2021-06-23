@@ -10,4 +10,5 @@ class MainActivity : AppCompatActivity() {
     }
     //TODO poner la funcionalidad del cardview HGS
     //TODO diseño principal hgs
+    //TODO
 }
