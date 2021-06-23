@@ -9,4 +9,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
     //TODO poner la funcionalidad del cardview HGS
+    //TODO diseño principal hgs
 }
