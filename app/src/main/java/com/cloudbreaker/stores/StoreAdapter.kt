@@ -23,12 +23,16 @@ class StoreAdapter(private var stores: MutableList<Store>, private var listener:
         val store = stores.get(position)
         with(holder){
             setListener(store)
-            
+
             binding.tvName.text = store.name
         }
     }
 
     override fun getItemCount(): Int = stores.size
+    fun add(store: Store) {
+        stores.add(store)
+        notifyDataSetChanged()
+    }
 
     inner class Viweholder(view: View) : RecyclerView.ViewHolder(view){
         val binding = ItemStoreBinding.bind(view)
