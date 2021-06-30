@@ -8,18 +8,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cloudbreaker.stores.databinding.ItemStoreBinding
 
 class StoreAdapter(private var stores: MutableList<StoreEntity>, private var listener: OnClickListener) :
-    RecyclerView.Adapter<StoreAdapter.Viweholder>(){
+    RecyclerView.Adapter<StoreAdapter.ViewHolder>(){
 
     private lateinit var mContext: Context
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viweholder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         mContext = parent.context
         val view = LayoutInflater.from(mContext).inflate(R.layout.item_store, parent, false)
 
-        return Viweholder(view)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: Viweholder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val store = stores.get(position)
         with(holder){
             setListener(store)
@@ -29,12 +29,20 @@ class StoreAdapter(private var stores: MutableList<StoreEntity>, private var lis
     }
 
     override fun getItemCount(): Int = stores.size
+
     fun add(storeEntity: StoreEntity) {
         stores.add(storeEntity)
         notifyDataSetChanged()
     }
 
-    inner class Viweholder(view: View) : RecyclerView.ViewHolder(view){
+    fun setStores(stores: MutableList<StoreEntity>) {
+        this.stores = stores
+        notifyDataSetChanged()
+
+
+    }
+
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val binding = ItemStoreBinding.bind(view)
 
         fun setListener(storeEntity : StoreEntity){
